@@ -5,9 +5,12 @@ const User = require('./models/User');
 mongoose.connect(process.env.MONGO_URI)
   .then(async () => {
 
-    await User.deleteMany({}); // optional clean
+    console.log("Connected to MongoDB ✅");
 
-    await User.create([
+    // optional: clean old users
+    await User.deleteMany({});
+
+    const users = [
       {
         fullname: 'Admin User',
         email: 'admin@example.com',
@@ -26,14 +29,20 @@ mongoose.connect(process.env.MONGO_URI)
         password: await bcrypt.hash('dev123', 10),
         role: 'developer',
       },
-    ]);
+    ];
 
-    console.log('Users created successfully');
+    await User.insertMany(users);
+
+    console.log("Users created successfully 🔥");
+    console.log("Admin    → admin@example.com / admin123");
+    console.log("Manager  → manager@example.com / manager123");
+    console.log("Developer→ developer@example.com / dev123");
 
     await mongoose.disconnect();
     process.exit(0);
+
   })
   .catch(err => {
-    console.error(err);
+    console.error("Error:", err);
     process.exit(1);
   });
