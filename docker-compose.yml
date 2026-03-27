@@ -30,8 +30,6 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
-    volumes:
-      - ./Backend:/app   # optional (dev ke liye useful)
     command: ["node", "server.js"]
 
   frontend:
@@ -41,7 +39,7 @@ services:
     ports:
       - "3000:80"
     depends_on:
-      - backend
+      - backend 
 
 volumes:
   mongo-data:
