@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: erp-deploy-backend:latest
+          image: prasadhire/erp-backend:latest
           ports:
             - containerPort: 5000
           resources:
