@@ -3,9 +3,13 @@ kind: Ingress
 metadata:
   name: erp-ingress
   namespace: erp-ns
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
-  - http:
+  - host: erp.local
+    http:
       paths:
       - path: /ERP
         pathType: Prefix
