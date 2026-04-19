@@ -33,9 +33,7 @@ pipeline{
         }
         stage("Deploy"){
             steps{
-                sh "docker compose down "
-                sh "docker compose pull"
-                sh "docker compose up -d"
+                sh "kubectl apply -f k8s/"
             }
         }
     }

@@ -2,4 +2,8 @@ kind: Namespace
 apiVersion: v1
 
 metadata:
+<<<<<<< HEAD
   name: ERP-ns
+=======
+  name: erp-ns
+>>>>>>> f118d85 (new chnages)
